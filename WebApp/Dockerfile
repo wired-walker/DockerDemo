@@ -45,3 +45,4 @@ WORKDIR /app
 COPY --from=publish /app/publish .
 COPY --from=react_build C:\\app ./wwwroot
 ENTRYPOINT ["dotnet", "WebApp.dll"]
+

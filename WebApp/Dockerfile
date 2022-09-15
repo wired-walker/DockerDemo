@@ -18,23 +18,17 @@ RUN dotnet build "WebApp.csproj" -c Release -o /app/build
 
 
 FROM node:12.18.1 as npm_install
-WORKDIR C:\\app
+WORKDIR ./npm_install
 RUN npm config set registry https://registry.npmjs.org/
-
 COPY ./WebApp/client-app/package.json .
-RUN dir
-
 RUN npm install 
 
 
 FROM node:12.18.1 as react_build
-WORKDIR C:\\app
-COPY --from=npm_install C:\\app .
+WORKDIR ./react_build
+COPY --from=npm_install ./npm_install .
 COPY ./WebApp/client-app .
-RUN cat package.json
-RUN ls -al ./node_modules/react-scripts/bin
 RUN npm run build
-RUN pwd
 
 
 FROM dotnet_build AS publish
@@ -43,6 +37,6 @@ RUN dotnet publish "WebApp.csproj" -c Debug -o /app/publish
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-COPY --from=react_build C:\\app ./wwwroot
+COPY --from=react_build /react_build/build ./wwwroot
 ENTRYPOINT ["dotnet", "WebApp.dll"]
 

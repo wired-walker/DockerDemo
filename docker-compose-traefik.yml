@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  web:
+    image: bwalker465/dev
+    labels:
+      - "traefik.http.routers.web-dockerdemo.rule=Host(`web-dockerdemo.walkerapps.local`)"
+    networks:
+      - "proxy"
+networks:
+  proxy:
+    external:
+      name: "traefik_traefik"

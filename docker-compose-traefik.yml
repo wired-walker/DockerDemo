@@ -5,6 +5,8 @@ services:
     image: bwalker465/dev
     labels:
       - "traefik.http.routers.web-dockerdemo.rule=Host(`web-dockerdemo.walkerapps.local`)"
+      - "traefik.http.services.web-dockerdemo.loadbalancer.server.port=80"
+      
     networks:
       - "proxy"
 networks:

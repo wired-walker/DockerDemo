@@ -1,16 +1,22 @@
 version: '3'
 
 services:
-  web:
+  uptime-kuma:
     image: louislam/uptime-kuma:1
     deploy:
       labels:
         - "traefik.http.routers.uptime-kuma.rule=Host(`uptime-kuma.walkerapps.local`)"
         - "traefik.http.services.uptime-kuma.loadbalancer.server.port=3001"
-      replicas: 10
+        - "traefik.docker.network=traefik-net"
+    volumes:
+      - uptime-kuma:/app/data
+    ports:
+      - 3001:3001
     networks:
       - "proxy"
 networks:
   proxy:
     external:
       name: "traefik-net"
+volumes:
+  uptime-kuma:

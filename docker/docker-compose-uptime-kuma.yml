@@ -5,7 +5,7 @@ services:
     image: louislam/uptime-kuma:1
     deploy:
       labels:
-        - "traefik.http.routers.uptime-kuma.rule=Host(`uptime-kuma`)"
+        - "traefik.http.routers.uptime-kuma.rule=Host(`uptime-kuma.walkerapps.local`)"
         - "traefik.http.services.uptime-kuma.loadbalancer.server.port=3001"
       replicas: 10
     networks:

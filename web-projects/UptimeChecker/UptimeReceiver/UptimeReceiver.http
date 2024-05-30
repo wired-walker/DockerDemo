@@ -1,0 +1,6 @@
+@UptimeReceiver_HostAddress = http://localhost:5199
+
+GET {{UptimeReceiver_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

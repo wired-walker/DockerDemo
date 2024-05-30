@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+  uptimereceiver:
+    image: ${DOCKER_REGISTRY-}uptimereceiver
+    build:
+      context: .
+      dockerfile: UptimeReceiver/Dockerfile
+  redis:
+    image: redis/redis-stack-server:latest
+    ports:
+      - 6379:6379
+  uptimemonitor:
+    image: ${DOCKER_REGISTRY-}uptimemonitor
+    build:
+      context: .
+      dockerfile: UptimeMonitor/Dockerfile
+

@@ -14,13 +14,15 @@ namespace UptimeMonitor
             _logger = logger;
             _redisConn = ConnectionMultiplexer.Connect("redis:6379");
             _up = true;
-            
+            _redisConn.GetDatabase().StringSet("lastCheckin", DateTime.MinValue.ToString());
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             while (!stoppingToken.IsCancellationRequested)
             {
+                var notifier = new DiscordNotifier();
+
                 if (_logger.IsEnabled(LogLevel.Information))
                 {
                     _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
@@ -43,13 +45,13 @@ namespace UptimeMonitor
                     if (now > lastCheckin + TimeSpan.FromSeconds(30) && _up) 
                     {
                         _logger.LogInformation($"DOWN: LastCheckin is out of date! Now: {now}, LastCheckin: {lastCheckin}");
-                        Gmailer.SendTextMessage("Internet is down!");
+                        //Gmailer.SendTextMessage("Internet is down!");
                         _up = false;   
                     }
                     else if (!_up && lastCheckin >= DateTime.UtcNow - TimeSpan.FromSeconds(30))
                     {
                         _logger.LogInformation($"UP: LastCheckin is recent: {lastCheckin}");
-                        Gmailer.SendTextMessage("Internet is back up!");
+                        //Gmailer.SendTextMessage("Internet is back up!");
                         _up = true;
                     }
                 }

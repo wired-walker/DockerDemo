@@ -15,8 +15,8 @@ namespace UptimeReceiver.Controllers
             _logger = logger;
         }
 
-        [HttpPost(Name = "Checkin")]
-        public bool Update()
+        [HttpPost("Checkin")]
+        public bool Checkin()
         {
             using (var redisConn = ConnectionMultiplexer.Connect("redis:6379"))
             {

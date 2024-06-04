@@ -20,7 +20,7 @@ namespace UptimeMonitor
                 client.UseDefaultCredentials = false;
                 client.EnableSsl = true;
                 
-                client.Credentials = new NetworkCredential("bwalker465@gmail.com", "bshvjysyhbkvoeiz");
+                client.Credentials = new NetworkCredential("bwalker465@gmail.com", "eh");
                 using (
                     var emailMessage = new MailMessage(
                     from: new MailAddress("bwalker465@gmail.com", "Walkernet Alerts"),

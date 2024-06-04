@@ -9,6 +9,8 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UptimeMonitor", "UptimeMonitor\UptimeMonitor.csproj", "{46701DC9-25E2-47F1-92EE-617427C81A4D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UptimeSender", "UptimeSender\UptimeSender.csproj", "{1F496054-A7E7-47B2-907E-F56291D0E0C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{46701DC9-25E2-47F1-92EE-617427C81A4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46701DC9-25E2-47F1-92EE-617427C81A4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46701DC9-25E2-47F1-92EE-617427C81A4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F496054-A7E7-47B2-907E-F56291D0E0C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F496054-A7E7-47B2-907E-F56291D0E0C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F496054-A7E7-47B2-907E-F56291D0E0C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F496054-A7E7-47B2-907E-F56291D0E0C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

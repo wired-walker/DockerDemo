@@ -3,6 +3,9 @@ version: '3.4'
 services:
   uptimereceiver:
     image: ${DOCKER_REGISTRY-}uptimereceiver
+    ports:
+      - 8080:8080
+      - 8081:8081
     build:
       context: .
       dockerfile: UptimeReceiver/Dockerfile
